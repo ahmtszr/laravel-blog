@@ -1,0 +1,19 @@
+#cards .card{
+    transition: .4s ease-in-out;
+}
+#cards .card:hover{
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+
+}
+#cards.card-body a{
+    transition: .4s ease-in-out;
+}
+#cards.card-body a:hover{
+    color:brown !important;
+}
+.w-10{
+    width: 180px;
+}
+.w-5{
+    width: 50px;
+}
