@@ -26,6 +26,8 @@ Route::get('/blog', [\App\Http\Controllers\BlogPostController::class, 'index'])-
 Route::get('/blog/{id}', [\App\Http\Controllers\BlogPostController::class, 'show'])->where(['id' => '[0-9]+'])->name('blog.show');
 Route::get('about_us',[App\Http\Controllers\BlogPostController::class,'about_us'])->name('blog-about-us.view');
 Route::get('contact',[App\Http\Controllers\BlogPostController::class,'contact'])->name('blog-contact.view');
+Route::get('contact/create',[App\Http\Controllers\BlogPostController::class,'create'])->name('blog-contact-create.view');
+Route::post('contact/create',[App\Http\Controllers\BlogPostController::class,'store'])->name('blog-contact-store.view');
 
 
 /**
@@ -37,6 +39,8 @@ Auth::routes();
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function (){
 
     Route::get('/dashboard', [App\Http\Controllers\Admin\DashBoardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/contact', [App\Http\Controllers\Admin\DashBoardController::class, 'contact'])->name('admin.contact');
+    Route::get('about-us', [App\Http\Controllers\Admin\DashBoardController::class, 'about_us'])->name('admin.about-us.view');
     Route::get('posts',[App\Http\Controllers\Admin\PostController::class,'index'])->name('admin-posts.view');
     Route::get('users',[App\Http\Controllers\Admin\UserController::class,'index'])->name('admin-users.view');
     Route::get('posts/{post_id}',[App\Http\Controllers\Admin\PostController::class,'edit']);

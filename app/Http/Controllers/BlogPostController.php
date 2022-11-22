@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactRequest;
 use App\Http\Requests\PostRequest;
 use App\Models\BlogPost;
+use App\Models\Contact;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
@@ -49,6 +51,27 @@ class BlogPostController extends Controller
     public function contact()
     {
         return view('blog.contact');
+    }
+
+    public function create()
+    {
+        return view('blog.contact');
+    }
+
+    public function store(ContactRequest $request)
+    {
+        $data=$request->validated();
+
+        $message= new Contact;
+        $message->name=$data['name'];
+        $message->email=$data['email'];
+        $message->message=$data['message'];
+
+        $message->save();
+
+        return redirect('contact')->with('success','Mesajınız başarıyla gönderildi');
+
+
     }
 
 }

@@ -5,14 +5,16 @@
 
     <div class="container p-3">
         <div class="row">
-            <div class="panel panel-default">
-                <div class="well well-sm">
-                    <form class="form-horizontal" action="" method="post">
+            <div class="col-12 pt-2">
+                <div class="border rounded mt-5 pl-4 pr-4 pt-4 pb-5 p-5">
+
+                    <form action="{{ route('blog-contact-create.view') }}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <fieldset>
                             <legend class="text-center">Contact us</legend>
 
                             <!-- Name input-->
-                            <div class="form-group">
+                            <div class="control-group col-12">
                                 <label class="col-md-3 control-label" for="name">Name</label>
                                 <div class="col-md-9">
                                     <input id="name" name="name" type="text" placeholder="Your name" class="form-control">
@@ -28,7 +30,7 @@
                             </div>
 
                             <!-- Message body -->
-                            <div class="form-group">
+                            <div class="control-group col-12 mt-2">
                                 <label class="col-md-3 control-label" for="message">Your message</label>
                                 <div class="col-md-9">
                                     <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5"></textarea>

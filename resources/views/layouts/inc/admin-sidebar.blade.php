@@ -19,12 +19,12 @@
                         Blog Anasayfa
                     </a>
 
-                    <a class="nav-link" href="{{ route('blog-about-us.view') }}">
+                    <a class="nav-link" href="{{ route('admin.about-us.view') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Hakkımızda
                     </a>
 
-                    <a class="nav-link" href="{{ route('blog-contact.view') }}">
+                    <a class="nav-link" href="{{ route('admin.contact') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         İletişim
                     </a>

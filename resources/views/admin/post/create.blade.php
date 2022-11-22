@@ -3,7 +3,7 @@
 @section('title','Add Post')
 
 @section('content')
-{{-- TODO: Ahmet SEENDEEEE --}}
+
 <div class="container-fluid px-4">
     <div class="card mt-4">
         <div class="card-header">

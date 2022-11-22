@@ -33,7 +33,7 @@
                             <td>{{$user->email}}</td>
                             <td>{{$user->user_name}}</td>
                             <td>
-                                <a href="{{url('admin/delete-users/'.$user->id)}}" class="btn btn-danger">Sil</a>
+                                <a href="{!! ('admin/delete-users/'.$user->id) !!}" class="btn btn-danger">Sil</a>
                             </td>
                         </tr>
                         </tbody>
