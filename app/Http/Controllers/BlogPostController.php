@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactRequest;
 use App\Http\Requests\PostRequest;
+use App\Models\AboutUs;
 use App\Models\BlogPost;
 use App\Models\Contact;
 use App\Models\User;
@@ -45,7 +46,8 @@ class BlogPostController extends Controller
 
     public function about_us()
     {
-        return view('blog.about-us');
+        $about_us=AboutUs::first();
+        return view('blog.about-us',compact('about_us'));
     }
 
     public function contact()
@@ -69,7 +71,7 @@ class BlogPostController extends Controller
 
         $message->save();
 
-        return redirect('contact')->with('success','Mesajınız başarıyla gönderildi');
+        return redirect('contact')->with('message','Mesajınız başarıyla gönderildi');
 
 
     }

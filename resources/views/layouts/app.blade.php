@@ -21,18 +21,18 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 @stack('script')
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
-
-
-    @if(Session::has('success'))
+    @if(Session::has('message'))
     Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'İşlem başarılı',
+        title:`{{ Session::get('message') }}`,
         showConfirmButton: false,
         timer: 1500
     })
     @endif
 </script>
+
 </body>
 </html>

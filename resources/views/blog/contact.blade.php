@@ -8,6 +8,7 @@
             <div class="col-12 pt-2">
                 <div class="border rounded mt-5 pl-4 pr-4 pt-4 pb-5 p-5">
 
+
                     <form action="{{ route('blog-contact-create.view') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <fieldset>
@@ -51,3 +52,4 @@
     </div>
 
 @endsection
+

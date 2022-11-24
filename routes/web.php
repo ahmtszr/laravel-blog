@@ -40,13 +40,15 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function (){
 
     Route::get('/dashboard', [App\Http\Controllers\Admin\DashBoardController::class, 'index'])->name('admin.dashboard');
     Route::get('/contact', [App\Http\Controllers\Admin\DashBoardController::class, 'contact'])->name('admin.contact');
-    Route::get('about-us', [App\Http\Controllers\Admin\DashBoardController::class, 'about_us'])->name('admin.about-us.view');
+    Route::get('about-us', [App\Http\Controllers\Admin\AboutUseController::class, 'about_us'])->name('admin.about-us');
+    Route::get('about-us/edit', [App\Http\Controllers\Admin\AboutUseController::class, 'edit'])->name('admin.about-us-edit');
+    Route::put('about-us/update', [App\Http\Controllers\Admin\AboutUseController::class, 'update'])->name('admin.about-us-update');
     Route::get('posts',[App\Http\Controllers\Admin\PostController::class,'index'])->name('admin-posts.view');
     Route::get('users',[App\Http\Controllers\Admin\UserController::class,'index'])->name('admin-users.view');
-    Route::get('posts/{post_id}',[App\Http\Controllers\Admin\PostController::class,'edit']);
+    Route::get('posts/{post_id}',[App\Http\Controllers\Admin\PostController::class,'edit'])->name('post.edit');
+    Route::put('update-post/{post_id}',[App\Http\Controllers\Admin\PostController::class,'update'])->name('post.update');
     Route::get('add-post',[App\Http\Controllers\Admin\PostController::class,'create']);
     Route::post('add-post',[App\Http\Controllers\Admin\PostController::class,'store']);
-    Route::put('update-post/{post_id}',[App\Http\Controllers\Admin\PostController::class,'update'])->name('post.update');
     Route::get('delete-post/{post_id}',[App\Http\Controllers\Admin\PostController::class,'destroy']);
     Route::get('delete-users/{id}',[App\Http\Controllers\Admin\UserController::class,'destroy']);
 

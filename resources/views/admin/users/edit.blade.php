@@ -17,12 +17,12 @@
                         @method('put')
                         <div class="row">
                             <div class="control-group col-12">
-                                <label for="title">Post Title</label>
+                                <label for="title">Post Başlığı</label>
                                 <input type="text" id="title" class="form-control" name="title"
                                        placeholder="Enter Post Title" value="{{ $posts->title }}" required>
                             </div>
                             <div class="control-group col-12 mt-2">
-                                <label for="body">Post Body</label>
+                                <label for="body">Post İçeriği</label>
                                 <textarea id="body" class="form-control" name="body" placeholder="Enter Post Body"
                                           rows="5" required>{{ $posts->body }}</textarea>
                             </div>
@@ -42,7 +42,7 @@
                         <div class="row mt-2">
                             <div class="control-group col-12 text-center">
                                 <button id="btn-submit" class="btn btn-primary">
-                                    Update Post
+                                    Postu Güncelle
                                 </button>
                             </div>
                         </div>

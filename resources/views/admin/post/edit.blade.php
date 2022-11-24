@@ -8,7 +8,7 @@
     <div class="card mt-4">
         <div class="card-header">
             <h4>Edit Post
-                <a href="{{url('admin/posts')}}" class="btn btn-danger float-end">Geri</a>
+                <a href="{{ url('admin/posts') }}" class="btn btn-danger float-end">Geri</a>
             </h4>
         </div>
         <div class="card-body">

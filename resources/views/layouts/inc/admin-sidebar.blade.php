@@ -19,7 +19,7 @@
                         Blog Anasayfa
                     </a>
 
-                    <a class="nav-link" href="{{ route('admin.about-us.view') }}">
+                    <a class="nav-link" href="{{ route('admin.about-us') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Hakkımızda
                     </a>
