@@ -12,7 +12,7 @@
 
                     <hr>
 
-                    <form action="" method="post">
+                    <form action="{!! route('my-blog.update',$posts->id) !!}" method="post">
                         @csrf
                         @method('put')
                         <div class="row">
@@ -26,6 +26,7 @@
                                 <textarea id="body" class="form-control" name="body" placeholder="Enter Post Body"
                                           rows="5" required>{{ $posts->body }}</textarea>
                             </div>
+
                             <div class="row mb-3 @error('picture') is-invalid @enderror">
                                 <div class="image-preview">
                                     <div class="preview pb-3 d-flex justify-content-center">

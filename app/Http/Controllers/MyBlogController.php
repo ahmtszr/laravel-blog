@@ -6,8 +6,10 @@ use App\Http\Requests\PostRequest;
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
+use mysql_xdevapi\Table;
 
 class MyBlogController extends Controller
 {
@@ -29,17 +31,24 @@ class MyBlogController extends Controller
             return view('admin.users.show',compact('posts'));  //returns the view with the post
     }
 
-    public function edit($post_id)
+    public function edit($user_id)
     {
-        $posts = BlogPost::find($post_id);
-        return view('admin.users.edit',compact('posts'));
+        $posts = BlogPost::where('user_id',Auth::user()->id)->find($user_id);
+
+        if ($posts)
+        {
+            return view('admin.users.edit', compact('posts'));
+        }
+        else
+            return view('errors.404');
+
     }
 
-    public function update(PostRequest $request,$id)
+    public function update(PostRequest $request, $user_id)
     {
         $data=$request->validated();
 
-        $posts=BlogPost::find($id);
+        $posts=BlogPost::find($user_id);
         $posts->title = $data['title'];
         $posts->body = $data['body'];
 
@@ -51,7 +60,7 @@ class MyBlogController extends Controller
             }
 
             $file=$request->file('picture');
-            $filename=time().'.'.$file->getClientOriginalExtension();
+            $filename=rand().'.'.$file->getClientOriginalExtension();
             $file->move('pictures/',$filename);
             $posts->picture=$filename;
         }

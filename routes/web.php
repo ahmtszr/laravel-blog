@@ -60,8 +60,8 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function (){
 
 Route::get('/my-blog', [App\Http\Controllers\MyBlogController::class,'index'])->name('my-blog.show');
 Route::get('/my-blog/{user_id}', [App\Http\Controllers\MyBlogController::class,'show'])->name('my-blog.details');
-Route::get('/my-blog/{user_id}/edit', [App\Http\Controllers\MyBlogController::class, 'edit']);
-Route::put('/my-blog/{user_id}/edit', [App\Http\Controllers\MyBlogController::class, 'update']);
+Route::get('/my-blog/{user_id}/edit', [App\Http\Controllers\MyBlogController::class, 'edit'])->name('my-blog.edit');
+Route::put('/my-blog/edit/{user_id}', [App\Http\Controllers\MyBlogController::class, 'update'])->name('my-blog.update');
 Route::get('/my-blog/create/post', [App\Http\Controllers\MyBlogController::class, 'create']); //shows create post form
 Route::post('/my-blog/create/post', [App\Http\Controllers\MyBlogController::class, 'store']); //saves the created post to the database.
 Route::get('delete/my-blog/{id}', [App\Http\Controllers\MyBlogController::class, 'destroy'])->name('post.delete'); //deletes post from the database

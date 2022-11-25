@@ -72,7 +72,7 @@ class PostController extends Controller
             }
 
             $file=$request->file('picture');
-            $filename=time().'.'.$file->getClientOriginalExtension();
+            $filename=rand().'.'.$file->getClientOriginalExtension();
             $file->move('pictures/',$filename);
             $post->picture=$filename;
         }
