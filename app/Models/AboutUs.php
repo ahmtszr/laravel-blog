@@ -17,4 +17,5 @@ class AboutUs extends Model
         'description'
     ];
 
+
 }

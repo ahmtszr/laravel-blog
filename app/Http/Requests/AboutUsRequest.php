@@ -21,11 +21,19 @@ class AboutUsRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+
+        public function rules()
     {
-        return [
-            'title'=>'string|required',
-            'description'=>'required|string'
+        $rules = [
+            'title' => [
+                'required',
+                'max:100'
+            ],
+            'description'=> [
+                'required',
+                'max:15000'
+            ]
         ];
+        return $rules;
     }
 }

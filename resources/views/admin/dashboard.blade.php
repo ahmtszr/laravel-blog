@@ -28,6 +28,26 @@
                 </div>
             </div>
 
+            <div class="col-md-6 col-lg-4 mb-4" id="cards">
+                <div class="card border-0 shadow rounded">
+                    <div class="card-body">Hakkımızda</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link text-muted" href="/admin/about-us">Hakkımızda detayları için tıklayın</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-4" id="cards">
+                <div class="card border-0 shadow rounded">
+                    <div class="card-body">İletişim</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link text-muted" href="/admin/contact">İletişim detayları için tıklayın</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
 @endsection

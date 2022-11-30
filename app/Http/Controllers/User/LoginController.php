@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
-use Illuminate\Console\View\Components\Alert;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -54,11 +52,11 @@ class LoginController extends Controller
     {
         if (Auth::user()->role_as == '1') //Admin
         {
-            return redirect('admin/dashboard')->with('status','Admin paneline hoşgeldiniz');
+            return redirect('admin/dashboard')->with('message','Admin paneline hoşgeldiniz');
         }
         else if (Auth::user()->role_as == '0')//user
         {
-            return redirect('/')->with('status','Giriş başarılı');
+            return redirect('/')->with('message','Giriş başarılı');
         }
         else
 

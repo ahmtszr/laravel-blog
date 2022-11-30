@@ -39,7 +39,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script src="{{ asset('assets/js/scripts.js')}}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+@stack('js')
 <script>
     @if(Session::has('message'))
     Swal.fire({
@@ -48,6 +48,31 @@
         title:`{{ Session::get('message') }}`,
         showConfirmButton: false,
         timer: 1500
+    })
+    @elseif(Session::has('error'))
+    Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title:`{{ Session::get('error') }}`,
+        showConfirmButton: false,
+        timer: 1500
+    })
+    @elseif(Session::has('warning'))
+        Swal.fire({
+        title:'Silmek istediğinize emin misiniz?',
+        position:'center',
+        icon:'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Evet'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+              icon:'success',
+                    title:'Başarıyla silindi!',
+            })
+        }
     })
     @endif
 </script>

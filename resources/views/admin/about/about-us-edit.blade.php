@@ -12,17 +12,17 @@
                 </h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.about-us-update') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('admin/about-us/update/'.$about_us->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('put')
+                    @method('PUT')
                     <div class="mb-3">
                         <label for="">Title</label>
-                        <input type="textarea" name="title" value="{{$about_us->title}}" class="form-control">
+                        <input type="textarea" name="title" value="{!! $about_us->title !!}" class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label for="">Body</label>
-                        <textarea name="body" class="form-control" rows="3" required>{{$about_us->description}}</textarea>
+                        <label for="">Description</label>
+                        <textarea name="description" class="form-control" rows="3" required>{!! $about_us->description !!}</textarea>
                     </div>
 
                     <div class="col-md-12">

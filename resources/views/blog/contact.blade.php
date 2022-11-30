@@ -12,36 +12,36 @@
                     <form action="{{ route('blog-contact-create.view') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <fieldset>
-                            <legend class="text-center">Contact us</legend>
+                            <legend class="text-center">İletişim</legend>
 
                             <!-- Name input-->
                             <div class="control-group col-12">
-                                <label class="col-md-3 control-label" for="name">Name</label>
+                                <label class="col-md-3 control-label" for="name">Ad</label>
                                 <div class="col-md-9">
-                                    <input id="name" name="name" type="text" placeholder="Your name" class="form-control">
+                                    <input id="name" name="name" type="text" placeholder="Adınız" class="form-control">
                                 </div>
                             </div>
 
                             <!-- Email input-->
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="email">Your E-mail</label>
+                                <label class="col-md-3 control-label" for="email">Email</label>
                                 <div class="col-md-9">
-                                    <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
+                                    <input id="email" name="email" type="text" placeholder="Email" class="form-control">
                                 </div>
                             </div>
 
                             <!-- Message body -->
                             <div class="control-group col-12 mt-2">
-                                <label class="col-md-3 control-label" for="message">Your message</label>
+                                <label class="col-md-3 control-label" for="message">Mesajınız</label>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5"></textarea>
+                                    <textarea class="form-control" id="message" name="message" placeholder="Lütfen mesajınızı yazın..." rows="5"></textarea>
                                 </div>
                             </div>
 
                             <!-- Form actions -->
                             <div class="form-group">
                                 <div class="col-md-12 text-right">
-                                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                                    <button type="submit" class="btn btn-primary btn-lg">Gönder</button>
                                 </div>
                             </div>
                         </fieldset>

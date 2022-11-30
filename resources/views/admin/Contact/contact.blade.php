@@ -9,22 +9,19 @@
         <div class="card mt-4">
 
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h4>Messages</h4>
+                <h4>Mesajlar</h4>
             </div>
 
             <div class="card-body">
-
-                @if(session('message'))
-                    <div class="alert alert-success">{{ session('message') }}</div>
-                @endif
 
                 <table class="table table-bordered">
                     <thead>
                     <tr>
                         <th class="w-5">Id</th>
-                        <th class="w-5">Name</th>
+                        <th class="w-5">Ad</th>
                         <th class="w-5">Email</th>
-                        <th scope="col">Message</th>
+                        <th scope="col">Mesaj</th>
+                        <th class="w-10"></th>
                     </tr>
                     </thead>
 
@@ -35,6 +32,9 @@
                             <td class="text-center">{{$messages->name}}</td>
                             <td class="text-center">{{$messages->email}}</td>
                             <td>{{$messages->message}}</td>
+                            <td class="text-center">
+                                <a href="{!! route('admin.contact.delete',$messages->id) !!}" class="btn btn-danger">Sil</a>
+                            </td>
                         </tr>
                         </tbody>
                     @endforeach

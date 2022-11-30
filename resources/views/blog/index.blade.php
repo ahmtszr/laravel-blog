@@ -6,7 +6,7 @@
         <div class="col-12 pt-2">
             <h1 class="text-center py-4">Bloglar</h1>
             <div class="row">
-                @forelse($posts as $post)
+                @foreach($posts as $post)
                 <div class="col-md-6 col-lg-4 mb-4" id="cards">
                     <div class="card border-0 shadow rounded">
                         <a href="/blog/{{$post->id}}">
@@ -19,9 +19,7 @@
                         </div>
                     </div>
                 </div>
-                @empty
-                <p class="text-warning">Henüz bir post bulunmamakta</p>
-                @endforelse
+                @endforeach
             </div>
         </div>
     </div>

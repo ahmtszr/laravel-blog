@@ -1,15 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use App\Models\BlogPost;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Session;
-use mysql_xdevapi\Table;
 
 class MyBlogController extends Controller
 {
@@ -17,7 +14,7 @@ class MyBlogController extends Controller
     public function index()
     {
         $posts=BlogPost::where('user_id',Auth::user()->id)->get();
-        return view('blog.my-blog',compact('posts'));
+        return view('user.my-blog',compact('posts'));
     }
 
     public function show($id = 0)
@@ -28,7 +25,7 @@ class MyBlogController extends Controller
         }
         else
 
-            return view('admin.users.show',compact('posts'));  //returns the view with the post
+            return view('user.show',compact('posts'));  //returns the view with the post
     }
 
     public function edit($user_id)
@@ -37,7 +34,7 @@ class MyBlogController extends Controller
 
         if ($posts)
         {
-            return view('admin.users.edit', compact('posts'));
+            return view('user.edit', compact('posts'));
         }
         else
             return view('errors.404');
@@ -65,12 +62,12 @@ class MyBlogController extends Controller
             $posts->picture=$filename;
         }
         $posts->update();
-        return redirect('/my-blog')->with('success','Post başarıyla güncellendi!');
+        return redirect('/my-blog')->with('message','Post başarıyla güncellendi!');
     }
 
     public function create()
     {
-        return view('admin.users.create');
+        return view('user.create');
     }
 
     public function store(PostRequest $request)
@@ -84,7 +81,7 @@ class MyBlogController extends Controller
 
         if (!$request->hasFile('picture'))
         {
-            return back()->with('error','Missing image!');
+            return back()->with('error','Resim eksik!');
         }
         else
         {
@@ -94,7 +91,7 @@ class MyBlogController extends Controller
             $posts->picture = $filename;
         }
         $posts->save();
-        return redirect('/my-blog')->with('success','Post başarıyla eklendi');
+        return redirect('/my-blog')->with('message','Postunuz başarıyla eklendi');
     }
     public function destroy($id)
     {
@@ -106,9 +103,9 @@ class MyBlogController extends Controller
                 File::delete($destination);
             }
             $posts->delete();
-            return redirect('/my-blog')->with('success','Post başarıyla silindi!');
+            return redirect('/my-blog');
         }
         else
-            return redirect('/my-blog')->with('message','Post id bulunamadı!');
+            return redirect('/my-blog')->with('error','Post id bulunamadı!');
     }
 }

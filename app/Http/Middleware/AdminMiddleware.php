@@ -25,7 +25,7 @@ class AdminMiddleware
             }
             else if (Auth::user()->role_as == '0')
             {
-                return redirect('/')->with('message','Erişim reddedildi! admin değilsiniz');
+                return redirect('/')->with('error','Erişim reddedildi! admin değilsiniz');
             }
         }
         else

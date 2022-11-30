@@ -1,18 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactRequest;
-use App\Http\Requests\PostRequest;
 use App\Models\AboutUs;
 use App\Models\BlogPost;
 use App\Models\Contact;
-use App\Models\User;
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 
 class BlogPostController extends Controller
@@ -40,8 +34,7 @@ class BlogPostController extends Controller
            echo 'sayfa bulunamadı';
        }
        else
-
-        return view('blog.show',compact('posts'));  //returns the view with the post
+           return view('blog.show',compact('posts'));  //returns the view with the post
     }
 
     public function about_us()
@@ -64,16 +57,12 @@ class BlogPostController extends Controller
     {
         $data=$request->validated();
 
-        $message= new Contact;
-        $message->name=$data['name'];
-        $message->email=$data['email'];
-        $message->message=$data['message'];
-
-        $message->save();
-
-        return redirect('contact')->with('message','Mesajınız başarıyla gönderildi');
-
-
+            $message = new Contact;
+            $message->name = $data['name'];
+            $message->email = $data['email'];
+            $message->message = $data['message'];
+            $message->save();
+            return redirect('contact')->with('message', 'Mesajınız başarıyla gönderildi');
     }
 
 }

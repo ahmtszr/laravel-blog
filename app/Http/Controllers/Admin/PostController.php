@@ -53,7 +53,7 @@ class PostController extends Controller
             $post->picture = $filename;
         }
         $post->save();
-        return redirect('admin/posts')->with('success','Post başarıyla eklendi');
+        return redirect('admin/posts')->with('message','Post başarıyla eklendi');
     }
 
     public function update(PostRequest $request, $post_id)
@@ -90,11 +90,12 @@ class PostController extends Controller
             if (File::exists($destination)) {
                 File::delete($destination);
             }
+
             $post->delete();
-            return redirect('admin/posts')->with('message','Post başarıyla silindi!');
+            return redirect('admin/posts');
         }
         else
-            return redirect('admin/posts')->with('message','Post id bulunamadı');
+            return redirect('admin/posts')->with('error','Post id bulunamadı');
     }
 
 

@@ -21,7 +21,7 @@
                     <a href="" class="text-decoration-none text-dark">
                         <img src="" alt="" class="img-fluid">
                         <div class="card-body">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, minus!</p>
+
                         </div>
                     </a>
                 </div>
