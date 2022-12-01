@@ -53,7 +53,7 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function (){
     Route::get('add-post',[App\Http\Controllers\Admin\PostController::class,'create'])->name('admin.add.post');
     Route::post('add-post',[App\Http\Controllers\Admin\PostController::class,'store'])->name('admin.store.post');
     Route::delete('delete-post/{post_id}',[App\Http\Controllers\Admin\PostController::class,'destroy'])->name('admin.post.delete');
-    Route::get('delete-users/{id}',[App\Http\Controllers\Admin\UserController::class,'destroy'])->name('admin.user.delete');
+    Route::delete('delete-users/{id}',[App\Http\Controllers\Admin\UserController::class,'destroy'])->name('admin.user.delete');
 
 });
 

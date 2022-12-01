@@ -33,7 +33,11 @@
                             <td>{{$user->email}}</td>
                             <td>{{$user->user_name}}</td>
                             <td>
-                                <a href="{!! ('admin/delete-users/'.$user->id) !!}" class="btn btn-danger">Sil</a>
+                                <form action="{!! route('admin.user.delete',$user->id) !!}" method="POST" class="form-horizontal delete-user" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" id="delete" class="btn btn-danger" onclick="DeleteUser()">Sil</button>
+                                </form>
                             </td>
                         </tr>
                         </tbody>
@@ -46,3 +50,30 @@
 
 
 @endsection
+@push('js')
+    <script>
+        function DeleteUser() {
+            Swal.fire({
+                title: "Silmek istediğinize emin misiniz",
+                content: "input",
+                showCancelButton: true,
+                closeOnConfirm: false,
+                cancelButtonText:'Hayır',
+                icon: "warning",
+                buttons: {
+                    cancel: "Hayır",
+                    confirm: "Evet",
+                },
+                inputPlaceholder: "Write something"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const deleteForm2=document.querySelector('.delete-user')
+                    Swal.fire(
+                        'Silindi!',
+                        'Başarıyla silindi.',
+                    )
+                    deleteForm2.submit()
+                }});
+        }
+    </script>
+@endpush

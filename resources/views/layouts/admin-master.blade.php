@@ -57,23 +57,6 @@
         showConfirmButton: false,
         timer: 1500
     })
-    @elseif(Session::has('warning'))
-        Swal.fire({
-        title:'Silmek istediğinize emin misiniz?',
-        position:'center',
-        icon:'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Evet'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-              icon:'success',
-                    title:'Başarıyla silindi!',
-            })
-        }
-    })
     @endif
 </script>
 

@@ -29,8 +29,8 @@ class RegisterController extends Controller
     {
         $user = User::create($request->validated());
 
-        auth()->login($user);
+        //auth()->login($user);
 
-        return redirect('/')->with('message', "Kayıt başarılı.");
+        return redirect('/login')->with('message', "Kayıt başarılı.");
     }
 }

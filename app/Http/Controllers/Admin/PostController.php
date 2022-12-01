@@ -92,7 +92,7 @@ class PostController extends Controller
             }
 
             $post->delete();
-            return redirect('admin/posts');
+            return redirect('admin/posts')->with('warning','');
         }
         else
             return redirect('admin/posts')->with('error','Post id bulunamadı');

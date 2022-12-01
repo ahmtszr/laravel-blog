@@ -39,7 +39,20 @@
     @yield('content')
 
 </main>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@stack('js')
 
+<script>
+    @if(Session::has('message'))
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title:`{{ Session::get('message') }}`,
+        showConfirmButton: false,
+        timer: 1500
+    })
+    @endif
+</script>
 
 </body>
 </html>

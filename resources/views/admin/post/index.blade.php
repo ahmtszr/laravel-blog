@@ -33,10 +33,11 @@
                         <td>{{$post->title}}</td>
                         <td class="text-center">
                             <a href="{!! url('admin/posts/'.$post->id) !!}" class="btn btn-success">Düzenle</a>
-                            <form action="{{ route('admin.post.delete',$post->id) }}" method="POST" class="form-delete">
+
+                            <form class="form-delete" action="{!! route('admin.post.delete',$post->id) !!}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button"  class="btn btn-danger delete-btn">Sil</button>
+                                <button type="button" onclick="Sil(this)" class="btn btn-danger">Delete</button>
                             </form>
 
                         </td>
@@ -52,28 +53,28 @@
 
 @endsection
 @push('js')
+<script>
 
-    <script>
-        const delBtns=document.querySelectorAll('.delete-btn')
-        delBtns.forEach(item => {
-            item.addEventListener('click', () => {
-                Swal.fire({
-                    title: 'Silmek istediğidinize emin misiniz?',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Sil',
-                    cancelButtonText: `İptal`,
-                }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {
-                        let deleteForm = document.querySelectorAll('.form-delete')
-                        deleteForm.forEach((item)=>item.submit())
-
-                    }
-                })
+        const Sil = (el)=>{
+            Swal.fire({
+                title: 'Silmek istediğidinize emin misiniz?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sil',
+                cancelButtonText: `İptal`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    let deleteForm = el.parentElement
+                    deleteForm.submit()
+                }
             })
-        })
-    </script>
+        }
+
+
+
+
+</script>
 @endpush
 
 
