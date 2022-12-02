@@ -33,10 +33,10 @@
                             <td>{{$user->email}}</td>
                             <td>{{$user->user_name}}</td>
                             <td>
-                                <form action="{!! route('admin.user.delete',$user->id) !!}" method="POST" class="form-horizontal delete-user" enctype="multipart/form-data">
+                                <form  class="delete-user" action="{{ route('admin.user.delete',$user->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" id="delete" class="btn btn-danger" onclick="DeleteUser()">Sil</button>
+                                    <button type="button" class="btn btn-danger" onclick="Sil(this)">Sil</button>
                                 </form>
                             </td>
                         </tr>
@@ -52,28 +52,27 @@
 @endsection
 @push('js')
     <script>
-        function DeleteUser() {
+
+        const Sil = (el)=>{
             Swal.fire({
-                title: "Silmek istediğinize emin misiniz",
-                content: "input",
+                title: 'Silmek istediğidinize emin misiniz?',
+                icon: 'warning',
                 showCancelButton: true,
-                closeOnConfirm: false,
-                cancelButtonText:'Hayır',
-                icon: "warning",
-                buttons: {
-                    cancel: "Hayır",
-                    confirm: "Evet",
-                },
-                inputPlaceholder: "Write something"
+                confirmButtonText: 'Sil',
+                cancelButtonText: `İptal`,
             }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
-                    const deleteForm2=document.querySelector('.delete-user')
-                    Swal.fire(
-                        'Silindi!',
-                        'Başarıyla silindi.',
-                    )
-                    deleteForm2.submit()
-                }});
+                    let deleteForm = el.parentElement
+                    deleteForm.submit()
+                    Swal.fire({
+                        icon: 'success',
+                        showConfirmButton:false,
+                        title:'Kullanıcı başarıyla silindi.',
+                    })
+                }
+            })
         }
+
     </script>
 @endpush

@@ -22,6 +22,7 @@
                         <th class="w-5">UserId</th>
                         <th scope="col">Başlık</th>
                         <th class="w-10"></th>
+                        <th class="w-10"></th>
                     </tr>
                 </thead>
 
@@ -33,13 +34,12 @@
                         <td>{{$post->title}}</td>
                         <td class="text-center">
                             <a href="{!! url('admin/posts/'.$post->id) !!}" class="btn btn-success">Düzenle</a>
-
-                            <form class="form-delete" action="{!! route('admin.post.delete',$post->id) !!}" method="POST">
+                        </td>
+                        <td class="text-center">
+                            <form class="form-delete" action="{{ route('admin.post.delete',$post->id) }}">
                                 @csrf
-                                @method('DELETE')
-                                <button type="button" onclick="Sil(this)" class="btn btn-danger">Delete</button>
+                                <button type="button" onclick="Sil(this)" class="btn btn-danger">Sil</button>
                             </form>
-
                         </td>
                     </tr>
                 </tbody>
@@ -67,12 +67,14 @@
                 if (result.isConfirmed) {
                     let deleteForm = el.parentElement
                     deleteForm.submit()
+                    Swal.fire({
+                        icon: 'success',
+                        showConfirmButton:false,
+                        title:'Post başarıyla silindi.',
+                    })
                 }
             })
         }
-
-
-
 
 </script>
 @endpush

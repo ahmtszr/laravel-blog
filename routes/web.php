@@ -14,10 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('homepage');
 /**
  * Blog Routes
  */
@@ -62,7 +59,8 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function (){
  */
 
 Route::get('/my-blog', [App\Http\Controllers\User\MyBlogController::class,'index'])->name('my-blog.show');
-Route::get('/my-blog/{user_id}', [App\Http\Controllers\User\MyBlogController::class,'show'])->name('my-blog.details');
+Route::get('/my-blog/{id}', [App\Http\Controllers\User\MyBlogController::class,'show'])->name('my-blog.details');
+Route::get('/my-blog/{id}', [App\Http\Controllers\User\MyBlogController::class, 'other'])->name('other-blog.show');
 Route::get('/my-blog/{user_id}/edit', [App\Http\Controllers\User\MyBlogController::class, 'edit'])->name('my-blog.edit');
 Route::put('/my-blog/edit/{user_id}', [App\Http\Controllers\User\MyBlogController::class, 'update'])->name('my-blog.update');
 Route::get('/my-blog/create/post', [App\Http\Controllers\User\MyBlogController::class, 'create']); //shows create post form

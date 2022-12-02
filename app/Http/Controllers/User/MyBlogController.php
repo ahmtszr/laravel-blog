@@ -17,15 +17,23 @@ class MyBlogController extends Controller
         return view('user.my-blog',compact('posts'));
     }
 
-    public function show($id = 0)
+    public function show($id)
     {
-        $posts=BlogPost::where('id', $id)->first();
-        if(!$posts){
-            echo 'sayfa bulunamadı';
-        }
-        else
+        $posts = BlogPost::where('id', $id)->first();
+        return view('blog.show',compact('posts')); //returns the fetched posts
+    }
 
-            return view('user.show',compact('posts'));  //returns the view with the post
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function other()
+    {
+        $post_all = BlogPost::all();
+        return view('blog.show',[
+            'blogs' => $post_all
+        ]); //returns the fetched posts
     }
 
     public function edit($user_id)

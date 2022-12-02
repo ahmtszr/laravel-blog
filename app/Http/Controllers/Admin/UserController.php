@@ -21,7 +21,7 @@ class UserController extends Controller
         if ($users)
         {
             $users->delete();
-            return redirect('admin/users')->with('warning','');
+            return redirect('admin/users');
         }
         else
             return redirect('admin/users')->with('message','Bu id\'ye sahip kullanıcı bulunamadı!');

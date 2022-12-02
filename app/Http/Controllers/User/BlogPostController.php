@@ -29,12 +29,8 @@ class BlogPostController extends Controller
      */
     public function show($id = 0)
     {
-       $posts=BlogPost::where('id', $id)->first();
-       if(!$posts){
-           echo 'sayfa bulunamadı';
-       }
-       else
-           return view('blog.show',compact('posts'));  //returns the view with the post
+        $posts = BlogPost::where('id', $id)->first();
+        return view('blog.show',compact('posts')); //returns the fetched posts
     }
 
     public function about_us()

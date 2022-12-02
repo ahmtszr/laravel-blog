@@ -83,15 +83,15 @@ class PostController extends Controller
     }
     public function destroy($post_id)
     {
-        $post=BlogPost::find($post_id);
-        if ($post)
+        $posts=BlogPost::find($post_id);
+        if ($posts)
         {
-            $destination='pictures/'.$post->picture;
+            $destination='pictures/'.$posts->picture;
             if (File::exists($destination)) {
                 File::delete($destination);
             }
 
-            $post->delete();
+            $posts->delete();
             return redirect('admin/posts')->with('warning','');
         }
         else
