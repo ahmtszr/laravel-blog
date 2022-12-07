@@ -14,16 +14,6 @@
             </div>
 
         </div>
-        <div class="col-md-4">
-            <h4 class="py-4">Diğer Postlar</h4>
-            <div class="card border-0 shadow rounded">
-                    <div class="card-body">
-                        <img src="{{asset('pictures/'.$posts->picture)}}" class="img-fluid" alt="">
-                        <a href="/blog/{{$posts->id}}">Detayı için buraya tıklayın.</a>
-                    </div>
-            </div>
-
-        </div>
     </div>
 </div>
 
