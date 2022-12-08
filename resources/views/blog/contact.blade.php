@@ -4,47 +4,43 @@
 
 
     <div class="container p-3">
-        <div class="row">
-            <div class="col-12 pt-2">
-                <div class="border rounded mt-5 pl-4 pr-4 pt-4 pb-5 p-5">
-
-
-                    <form action="{{ route('blog-contact-create.view') }}" method="post" enctype="multipart/form-data">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('/') }}">Anasayfa</a></li>
+                <li class="breadcrumb-item active" aria-current="page">İletişim</li>
+            </ol>
+        </nav>
+        <div class="row border bg-light shadow mt-4 py-4">
+            <div class="col-8 pt-2 mx-auto">
+                <div class="p-5">
+                    <form action="{{ route('blog-contact-store.view') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <fieldset>
-                            <legend class="text-center">İletişim</legend>
-
-                            <!-- Name input-->
-                            <div class="control-group col-12">
-                                <label class="col-md-3 control-label" for="name">Ad</label>
-                                <div class="col-md-9">
-                                    <input id="name" name="name" type="text" placeholder="Adınız" class="form-control">
+                        <div class="d-flex flex-column justify-content-center">
+                            <h1 class="text-center pb-4">İletişim</h1>
+                            <div class="row mb-3">
+                                <label for="name" class="col-sm-2 col-form-label fw-bold">Ad soyad:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="name" name="name">
                                 </div>
                             </div>
-
-                            <!-- Email input-->
-                            <div class="form-group">
-                                <label class="col-md-3 control-label" for="email">Email</label>
-                                <div class="col-md-9">
-                                    <input id="email" name="email" type="text" placeholder="Email" class="form-control">
+                            <div class="row mb-3">
+                                <label for="email" class="col-sm-2 col-form-label fw-bold">E-mail:</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="email" name="email">
                                 </div>
                             </div>
-
-                            <!-- Message body -->
-                            <div class="control-group col-12 mt-2">
-                                <label class="col-md-3 control-label" for="message">Mesajınız</label>
-                                <div class="col-md-9">
-                                    <textarea class="form-control" id="message" name="message" placeholder="Lütfen mesajınızı yazın..." rows="5"></textarea>
+                            <div class="row mb-3">
+                                <label for="message" class="col-sm-2 col-form-label fw-bold">Mesaj:</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" name="message" id="message" cols="30" rows="10"></textarea>
                                 </div>
                             </div>
-
-                            <!-- Form actions -->
-                            <div class="form-group">
-                                <div class="col-md-12 text-right">
-                                    <button type="submit" class="btn btn-primary btn-lg">Gönder</button>
+                            <div class="row">
+                                <div class="col-md-10 offset-sm-2">
+                                    <button type="submit" class="btn btn-primary w-100 ">Gönder</button>
                                 </div>
                             </div>
-                        </fieldset>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -37,7 +37,7 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function (){
 
     Route::get('/dashboard', [App\Http\Controllers\Admin\DashBoardController::class, 'index'])->name('admin.dashboard');
     Route::get('/contact', [App\Http\Controllers\Admin\DashBoardController::class, 'contact'])->name('admin.contact');
-    Route::get('delete/contact/{id}', [App\Http\Controllers\Admin\DashBoardController::class, 'deleteContact'])->name('admin.contact.delete');
+    Route::delete('delete/contact/{id}', [App\Http\Controllers\Admin\DashBoardController::class, 'deleteContact'])->name('admin.contact.delete');
     Route::get('about-us', [App\Http\Controllers\Admin\AboutUseController::class, 'about_us'])->name('admin.about-us');
     Route::get('about-us-create', [App\Http\Controllers\Admin\AboutUseController::class, 'create'])->name('admin.about-us-create');
     Route::post('about-us-create', [App\Http\Controllers\Admin\AboutUseController::class, 'store'])->name('admin.about-us-store');

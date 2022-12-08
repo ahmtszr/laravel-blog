@@ -24,7 +24,7 @@
                                     </h4>
                                     <p class="text-muted line-clamp-2">{{$post->body}}</p>
                                     <div class="d-flex justify-content-between align-items-center pt-4 pb-2">
-                                        <a href="/blog/{{$post->id}}/edit" class="text-decoration-none text-secondary">
+                                        <a href="/my-blog/{!! $post->id !!}/edit" class="text-decoration-none text-secondary">
                                             <button type="submit" class="btn btn-success btn-witdh">Düzenle</button>
                                         </a>
                                         <form action="{{ route('post.delete',$post->id) }}" method="POST" class="form-delete">

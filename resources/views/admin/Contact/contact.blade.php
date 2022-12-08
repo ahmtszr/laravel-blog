@@ -33,7 +33,11 @@
                             <td class="text-center">{{$messages->email}}</td>
                             <td>{{$messages->message}}</td>
                             <td class="text-center">
-                                <a href="{!! route('admin.contact.delete',$messages->id) !!}" class="btn btn-danger">Sil</a>
+                                <form action="{!! route('admin.contact.delete',$messages->id) !!}" method="POST" class="form-delete">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" class="btn btn-danger delete-btn btn-width" onclick="Sil(this)">Sil</button>
+                                </form>
                             </td>
                         </tr>
                         </tbody>
@@ -46,3 +50,29 @@
     </div>
 
 @endsection
+@push('js')
+    <script>
+
+        const Sil = (el)=>{
+            Swal.fire({
+                title: 'Silmek istediğidinize emin misiniz?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sil',
+                cancelButtonText: `İptal`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    let deleteForm = el.parentElement
+                    deleteForm.submit()
+                    Swal.fire({
+                        icon: 'success',
+                        showConfirmButton:false,
+                        title:'Mesaj başarıyla silindi.',
+                    })
+                }
+            })
+        }
+
+    </script>
+@endpush

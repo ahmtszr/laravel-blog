@@ -34,7 +34,7 @@ class DashBoardController extends Controller
         if ($contact)
         {
             $contact->delete();
-            return redirect('/admin/contact')->with('message','Mesaj başarıyla silindi!');
+            return redirect('/admin/contact');
         }
         else
             return redirect('/admin/contact')->with('error','Mesaj id bulunamadı!');
