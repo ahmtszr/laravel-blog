@@ -18,7 +18,7 @@ class BlogPostController extends Controller
      */
     public function index()
     {
-        $posts = BlogPost::all(); //fetch all blog posts from DB
+        $posts = BlogPost::paginate(3); //fetch all blog posts from DB
         return view('blog.index',compact('posts')); //returns the fetched posts
     }
 
